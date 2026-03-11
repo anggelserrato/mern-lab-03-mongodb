@@ -5,7 +5,7 @@ import {
   createTask,
   updateTask,
   deleteTask,
-} from "../controllers/taskController";
+} from "../controllers/taskController.js";
 import { validateSchema } from "../middlewares/validateSchema.js";
 import {
   createTaskSchema,
