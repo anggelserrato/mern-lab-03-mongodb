@@ -4,6 +4,8 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import statusRoutes from "./routes/statusRoutes.js";
+import taskRoutes from "./routes/taskRoutes.js";
 
 dotenv.config();
 
@@ -20,9 +22,8 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hello World!" });
-});
+app.use(statusRoutes);
+app.use("/api/tasks", taskRoutes);
 
 connectDB().then(() => {
   app.listen(3000, () => {
